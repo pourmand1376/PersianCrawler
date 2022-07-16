@@ -1,39 +1,38 @@
-# TasnimNewsCrawler
-A Crawler to save all [tasnim news](https://www.tasnimnews.com/) pages based on category. This is appopriate for text classification task. 
+[![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/amirpourmand/datasets)
 
-[![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/code/amirpourmand/text-classification-tasnim)
+# Crawler
+Open source crawler for Persian websites. 
 
-## Installation Guide
+Crawled websites to now:
+- [Asriran](https://www.kaggle.com/datasets/amirpourmand/asriran-news)
+- [Fa-Wikipedia](https://www.kaggle.com/datasets/amirpourmand/fa-wikipedia)
+- [Tasnim](https://www.kaggle.com/datasets/amirpourmand/tasnimdataset)
 
-To start, you have to install scrapy using:
+### Asriran
 
 ```bash
-pip install scrapy
+asriran/run_asriran.sh
 ```
 
-Then clone it and start crawling:
+> You can change some paramters in this crawler. See `run_asriran.sh`.
+
+### Fa-Wikipedia
+
 ```bash
-git clone https://github.com/pourmand1376/TasnimNewsCrawler/
-cd TasnimNewsCrawler 
-./run.sh
+wikipedia/run_wikipedia.sh
 ```
 
-> We have also a parameter Called `Number_of_pages` which controls how many pages we should crawl in each category. 
+### Tasnim News
+This crawler saves [tasnim news](https://www.tasnimnews.com/) pages based on category. This is appopriate for text classification task as data is relatively balanced across all categories. I selected equal amount of page per category. 
 
+> We have a parameter Called `Number_of_pages` in `tasnim.py` which controls how many pages we should crawl in each category. 
 
-Dataset is available for download at [Kaggle](https://www.kaggle.com/datasets/amirpourmand/tasnimdataset) or [github](https://github.com/pourmand1376/TasnimNewsCrawler/raw/main/tasnim.zip). 
-
-Cite my dataset via:
+```bash
+tasnim/run_tasnim.sh
 ```
-@misc{ 
-        amir_pourmand_2022,
-        title={TasnimDataset},
-        url={https://www.kaggle.com/dsv/3500080}, 
-        DOI={10.34740/KAGGLE/DSV/3500080},
-        publisher={Kaggle}, 
-        author={Amir Pourmand},
-        year={2022} 
-    }
-```
+
+Dataset is available for download at [Kaggle](https://www.kaggle.com/amirpourmand/datasets)
+
+
 
 
