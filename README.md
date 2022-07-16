@@ -1,9 +1,7 @@
 [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/amirpourmand/datasets)
 
 # Crawler
-Open source crawler for Persian websites. 
-
-Crawled websites to now:
+Open source crawler for Persian websites. Crawled websites to now:
 - [Asriran](https://www.kaggle.com/datasets/amirpourmand/asriran-news)
 - [Fa-Wikipedia](https://www.kaggle.com/datasets/amirpourmand/fa-wikipedia)
 - [Tasnim](https://www.kaggle.com/datasets/amirpourmand/tasnimdataset)
