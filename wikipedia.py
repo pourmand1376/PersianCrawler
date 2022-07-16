@@ -20,6 +20,8 @@ class WikipediaSpider(scrapy.Spider):
                 yield scrapy.Request(
                     self.main_url+next_page[0],
                     callback=self.parse,
+                    dont_filter=True,
+                    errback=self.handle_failure,
                 )
 
             for article in response.css('div#mw-content-text > div.mw-allpages-body a::attr(href)').getall():
@@ -30,12 +32,20 @@ class WikipediaSpider(scrapy.Spider):
         except Exception:
             logger.error("Parsing Error: ", exc_info=True)
 
+    def handle_failure(self, failure):
+        logger.warning("Error,", failure.request.url)
+        yield scrapy.Request(
+            url=failure.request.url,
+            dont_filter=True,
+            callback=self.parse,
+            errback=self.handle_failure)
+
     def parse_news(self, response):
         try: 
             item = {
                 'title': response.css('#firstHeading *::text').get(),
                 'content': ' '.join(response.css('div#mw-content-text > div.mw-parser-output > *:not(style):not(table)::text').getall()),
-                'link': response.css('li#t-permalink > a::attr(href)').get(),
+                'link': self.main_url+response.css('li#t-permalink > a::attr(href)').get(),
             }
             
             for key in item:
