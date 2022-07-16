@@ -29,7 +29,7 @@ This crawler saves [tasnim news](https://www.tasnimnews.com/) pages based on cat
 tasnim/run_tasnim.sh
 ```
 
-Dataset is available for download at [Kaggle](https://www.kaggle.com/amirpourmand/datasets)
+Dataset is available for download at [Kaggle](https://www.kaggle.com/amirpourmand/datasets).
 
 
 
