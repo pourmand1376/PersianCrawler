@@ -29,10 +29,13 @@ class WikipediaSpider(scrapy.Spider):
     def __init__(self, gather_index_pages=False):
         # همه صفحه ها
         # صفحه ایندکس ویکی پدیای فارسی
-        self.start_urls = ["https://fa.wikipedia.org/w/index.php?title=%D9%88%DB%8C%DA%98%D9%87:%D8%AA%D9%85%D8%A7%D9%85_%D8%B5%D9%81%D8%AD%D9%87%E2%80%8C%D9%87%D8%A7"]
-        self.gather_index_pages = gather_index_pages
-        if not self.gather_index_pages:
-            self.start_urls=Path('wikipedia/kaggle/index.txt').read_text().split('\n')
+        try:
+            self.start_urls = ["https://fa.wikipedia.org/w/index.php?title=%D9%88%DB%8C%DA%98%D9%87:%D8%AA%D9%85%D8%A7%D9%85_%D8%B5%D9%81%D8%AD%D9%87%E2%80%8C%D9%87%D8%A7"]
+            self.gather_index_pages = gather_index_pages
+            if not self.gather_index_pages:
+                self.start_urls=Path('wikipedia/kaggle/index.txt').read_text().split('\n')
+        except Exception:
+            logger.error('error', exc_info=True)
 
     def parse(self, response):
         try:
