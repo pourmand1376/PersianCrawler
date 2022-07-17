@@ -1,7 +1,7 @@
 while true; do
     read -p "Do you want to build index.txt file? " yn
     case $yn in
-        [Yy]* ) rm wikipedia/kaggle/wikipedia.csv
+        [Yy]* ) rm index.txt
                 scrapy runspider --set FEED_EXPORT_ENCODING=utf-8 wikipedia.py -o wikipedia/kaggle/wikipedia.csv -a gather_index_pages=True; exit;;
         [Nn]* ) echo "You chose not to build index.txt file. Going forwrd to crawl the wikipedia"; break;;
         * ) echo "Please answer yes or no.";;
