@@ -12,10 +12,10 @@ class WikipediaSpider(scrapy.Spider):
 
     main_url = "https://fa.wikipedia.org/"
 
-    custom_settings = {'AUTOTHROTTLE_ENABLED':'True',
-                        'HTTPCACHE_ENABLED':'True', 
-                        'CONCURRENT_REQUESTS':'30',
-                        'CONCURRENT_REQUESTS_PER_DOMAIN':'30',
+    custom_settings = {'AUTOTHROTTLE_ENABLED':True,
+                        'HTTPCACHE_ENABLED':True, 
+                        'CONCURRENT_REQUESTS':30,
+                        'CONCURRENT_REQUESTS_PER_DOMAIN':30,
                      },
 
 
@@ -32,7 +32,7 @@ class WikipediaSpider(scrapy.Spider):
         self.start_urls = ["https://fa.wikipedia.org/w/index.php?title=%D9%88%DB%8C%DA%98%D9%87:%D8%AA%D9%85%D8%A7%D9%85_%D8%B5%D9%81%D8%AD%D9%87%E2%80%8C%D9%87%D8%A7"]
         self.gather_index_pages = gather_index_pages
         if not self.gather_index_pages:
-            self.start_urls=Path('index.txt').read_text().split('\n')
+            self.start_urls=Path('wikipedia/kaggle/index.txt').read_text().split('\n')
 
     def parse(self, response):
         try:
