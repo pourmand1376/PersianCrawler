@@ -24,11 +24,13 @@ class WikipediaSpider(scrapy.Spider):
         # صفحه ایندکس ویکی پدیای فارسی
         self.start_urls = ["https://fa.wikipedia.org/w/index.php?title=%D9%88%DB%8C%DA%98%D9%87:%D8%AA%D9%85%D8%A7%D9%85_%D8%B5%D9%81%D8%AD%D9%87%E2%80%8C%D9%87%D8%A7"]
         self.gather_index_pages = gather_index_pages
+        if not self.gather_index_pages:
+            self.start_urls=Path('index.txt').read_text().split('\n')
 
     def parse(self, response):
         try:
             next_page = response.css('div#mw-content-text > div:nth-child(2)> :contains("صفحهٔ بعد")::attr(href)').getall()
-            if next_page and self.gather_index_pages:
+            if self.gather_index_pages and next_page:
                 logger.info(f"Next page {next_page}")
                 
                 with Path('index.txt').open("a") as f:
@@ -40,6 +42,7 @@ class WikipediaSpider(scrapy.Spider):
                     dont_filter=True,
                     errback=self.handle_failure,
                 )
+                
             if not self.gather_index_pages:
                 for article in response.css('div#mw-content-text > div.mw-allpages-body a::attr(href)').getall():
                     yield scrapy.Request(
