@@ -32,7 +32,7 @@ class WikipediaSpider(scrapy.Spider):
                 logger.info(f"Next page {next_page}")
                 
                 with Path('index.txt').open("a") as f:
-                    f.write(self.main_url+next_page[0])
+                    f.write(self.main_url+next_page[0]+'\n')
 
                 yield scrapy.Request(
                     self.main_url+next_page[0],
