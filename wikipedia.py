@@ -2,10 +2,20 @@ import scrapy
 import re
 from logger import logger
 
+import logging
+from scrapy.utils.log import configure_logging 
+
 class WikipediaSpider(scrapy.Spider):
     name= "Wikipedia"
 
     main_url = "https://fa.wikipedia.org/"
+
+    configure_logging(install_root_handler=False)
+    logging.basicConfig(
+        filename='log.txt',
+        format='%(levelname)s: %(message)s',
+        level=logging.INFO
+    )
 
     def __init__(self):
         # همه صفحه ها
