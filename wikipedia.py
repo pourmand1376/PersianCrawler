@@ -16,7 +16,7 @@ class WikipediaSpider(scrapy.Spider):
                         'HTTPCACHE_ENABLED':True, 
                         'CONCURRENT_REQUESTS':30,
                         'CONCURRENT_REQUESTS_PER_DOMAIN':30,
-                        },
+                     },
 
 
     configure_logging(install_root_handler=False)
