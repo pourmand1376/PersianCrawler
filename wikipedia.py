@@ -27,6 +27,7 @@ class WikipediaSpider(scrapy.Spider):
         try:
             next_page = response.css('div#mw-content-text > div:nth-child(2)> :contains("صفحهٔ بعد")::attr(href)').getall()
             if next_page:
+                logger.info(f"Next page {next_page}")
                 yield scrapy.Request(
                     self.main_url+next_page[0],
                     callback=self.parse,
