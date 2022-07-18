@@ -16,6 +16,7 @@ asriran/run_asriran.sh
 
 ### Fa-Wikipedia
 
+Due to some problems in crawling, I splitted this job into two stages. First crawling all index pages and second use those pages for crawling. 
 ```bash
 wikipedia/run_wikipedia.sh
 ```
