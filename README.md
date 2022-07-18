@@ -32,6 +32,8 @@ tasnim/run_tasnim.sh
 
 Datasets are all available for download at [Kaggle](https://www.kaggle.com/amirpourmand/datasets).
 
+CSS selectors are mostly extracted via [Copy Css Selector](https://chrome.google.com/webstore/detail/copy-css-selector/kemkenbgbgodoglfkkejbdcpojnodnkg?hl=en).
+
 
 
 
