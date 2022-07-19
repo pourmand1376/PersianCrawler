@@ -16,6 +16,7 @@ asriran/run_asriran.sh
 
 ### Fa-Wikipedia
 
+Due to some problems in crawling, I splitted this job into two stages. First crawling all index pages and second use those pages for crawling. 
 ```bash
 wikipedia/run_wikipedia.sh
 ```
@@ -30,6 +31,8 @@ tasnim/run_tasnim.sh
 ```
 
 Datasets are all available for download at [Kaggle](https://www.kaggle.com/amirpourmand/datasets).
+
+CSS selectors are mostly extracted via [Copy Css Selector](https://chrome.google.com/webstore/detail/copy-css-selector/kemkenbgbgodoglfkkejbdcpojnodnkg?hl=en).
 
 
 
