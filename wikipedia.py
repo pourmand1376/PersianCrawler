@@ -33,7 +33,7 @@ class WikipediaSpider(scrapy.Spider):
             self.start_urls = ["https://fa.wikipedia.org/w/index.php?title=%D9%88%DB%8C%DA%98%D9%87:%D8%AA%D9%85%D8%A7%D9%85_%D8%B5%D9%81%D8%AD%D9%87%E2%80%8C%D9%87%D8%A7"]
             self.gather_index_pages = gather_index_pages
             if not self.gather_index_pages:
-                self.start_urls=Path('wikipedia/kaggle/index.txt').read_text().split('\n')
+                self.start_urls=Path('wikipedia/index.txt').read_text().split('\n')
         except Exception:
             logger.error('error', exc_info=True)
 
@@ -43,7 +43,7 @@ class WikipediaSpider(scrapy.Spider):
             if self.gather_index_pages and next_page:
                 logger.info(f"Next page {next_page}")
                 
-                with Path('wikipedia/kaggle/index.txt').open("a") as f:
+                with Path('wikipedia/index.txt').open("a") as f:
                     f.write(self.main_url+next_page[0]+'\n')
 
                 yield scrapy.Request(
