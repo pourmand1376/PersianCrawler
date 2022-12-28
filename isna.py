@@ -7,6 +7,12 @@ class IsnaSpider(scrapy.Spider):
     
     name = "Isna"
     start_urls = []
+    custom_settings = {'AUTOTHROTTLE_ENABLED':True,
+                        'HTTPCACHE_ENABLED':True, 
+                        'CONCURRENT_REQUESTS':30,
+                        'CONCURRENT_REQUESTS_PER_DOMAIN':30,
+                      }
+
 
     main_url = "https://www.isna.ir"
     
@@ -32,7 +38,15 @@ class IsnaSpider(scrapy.Spider):
         # Print the start URLs
         logger.info('urls are appended')
 
+    def handle_failure(self, failure):
+        logger.warning("Error,", failure.request.url)
+        yield scrapy.Request(
+            url=failure.request.url,
+            dont_filter=True,
+            callback=self.parse,
+            errback=self.handle_failure)
 
+        
     def parse(self, response ):
         try:
             for news in response.css("div.items a::attr(href)").getall():
