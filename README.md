@@ -37,3 +37,5 @@ CSS selectors are mostly extracted via [Copy Css Selector](https://chrome.google
 
 
 
+- https://stackoverflow.com/questions/73859249/attributeerror-module-openssl-ssl-has-no-attribute-sslv3-method
+- https://stackoverflow.com/a/73867925/4201765
