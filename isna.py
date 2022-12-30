@@ -9,8 +9,8 @@ class IsnaSpider(scrapy.Spider):
     start_urls = []
     custom_settings = {'AUTOTHROTTLE_ENABLED':True,
                         'HTTPCACHE_ENABLED':True, 
-                        'CONCURRENT_REQUESTS':200,
-                        'CONCURRENT_REQUESTS_PER_DOMAIN':200,
+                        #'CONCURRENT_REQUESTS':1000,
+                        #'CONCURRENT_REQUESTS_PER_DOMAIN':1000,
                       }
 
 
