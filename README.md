@@ -5,6 +5,7 @@ Open source crawler for Persian websites. Crawled websites to now:
 - [Asriran](https://www.kaggle.com/datasets/amirpourmand/asriran-news)
 - [Fa-Wikipedia](https://www.kaggle.com/datasets/amirpourmand/fa-wikipedia)
 - [Tasnim](https://www.kaggle.com/datasets/amirpourmand/tasnimdataset)
+- [Isna](https://www.kaggle.com/datasets/amirpourmand/isna-news)
 
 ### Asriran
 
