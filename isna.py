@@ -50,6 +50,8 @@ class IsnaSpider(scrapy.Spider):
         
     def parse(self, response ):
         try:
+            # we have a problem in isna which is unsolved. If you go to page 50, for example, it might show you some news from previous days! 
+            # so acutally you should filter that out. 
             for news in response.css("div.items a::attr(href)").getall():
                 if len(news.strip()) > 0:
                     yield scrapy.Request(
