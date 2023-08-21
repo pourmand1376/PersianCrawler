@@ -2,7 +2,7 @@ from logger import logger
 import scrapy
 import logging
 from scrapy.utils.log import configure_logging
-from pathlib import Path
+
 
 class EnsaniSpider(scrapy.Spider):
     name= "Ensani"
