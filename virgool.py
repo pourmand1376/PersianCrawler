@@ -7,6 +7,11 @@ class VirgoolSpider(scrapy.Spider):
     name = "Virgool"
     number_of_pages = 30000
 
+    custom_settings = {'AUTOTHROTTLE_ENABLED': True,
+                       'HTTPCACHE_ENABLED': True,
+                       'CONCURRENT_REQUESTS': 100,
+                       'CONCURRENT_REQUESTS_PER_DOMAIN': 100,
+                       }
     def __init__(self, gather_index_pages=False, **kwargs):
         super().__init__(**kwargs)
         self.start_urls = []
