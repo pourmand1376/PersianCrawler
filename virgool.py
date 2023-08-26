@@ -2,6 +2,18 @@ import scrapy
 from pathlib import Path
 from logger import logger
 import re
+from trafilatura import  extract
+
+
+def get_cookie(response):
+    content = response.body.decode('utf-8')
+    cookie_regex = "document\.cookie\s*=\s*\\'(.+); Max-Age"
+
+    match = re.search(cookie_regex, content)
+    if match:
+        return match.group(1)
+    return None
+
 
 class VirgoolSpider(scrapy.Spider):
     name = "Virgool"
@@ -37,8 +49,9 @@ class VirgoolSpider(scrapy.Spider):
             else:
                 item = {'title': response.css('main#app h1::text').get(),
                         'author': response.css('main#app div.module-header > a::text').get(),
-                        'text': "\n\n".join(response.css('main#app div.post-content * ::text').getall()),
+                        'text': extract(response),
                         'url': response.css('.shorturl-text::text').get()}
+
                 # if I use strip on all of them I may get error. I have to check if it is not none.
                 for key in item:
                     if item[key]:
