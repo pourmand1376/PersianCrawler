@@ -47,7 +47,7 @@ class VirgoolSpider(scrapy.Spider):
             else:
                 item = {'title': response.css('main#app h1::text').get(),
                         'author': response.css('main#app div.module-header > a::text').get(),
-                        'text': extract(response),
+                        'text': "\n\n".join(response.css('main#app div.post-content * ::text').getall()),
                         'url': response.css('.shorturl-text::text').get()}
 
                 # if I use strip on all of them I may get error. I have to check if it is not none.
