@@ -25,10 +25,10 @@ class TarjomanSpider(scrapy.Spider):
 
     def parse(self, response, **kwargs):
         try:
-            item = {'title': response.css('main#app h1::text').get().strip(),
-                    'author': response.css('main#app div.module-header > a::text').get().strip(),
-                    'text': "\n\n".join(response.css('main#app div.post-content * ::text').getall()),
-                    'url': response.css('.shorturl-text::text').get()}
+            item = {'title': response.css('div#detail-article h1::text').get(),
+                    'text': extract(response.body.decode('utf-8'),deduplicate=True, include_images=False, include_comments=False, include_links=False),
+                    'url': response.url,
+                    }
             return item
         except Exception:
             logger.error("Parsing Error: ", exc_info=True)
