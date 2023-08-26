@@ -2,3 +2,4 @@ rich==12.5.1
 Scrapy==2.6.1
 pyopenssl==22.0.0
 cryptography==38.0.4
+trafilatura==1.6.1

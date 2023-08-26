@@ -18,6 +18,7 @@ class TarjomanSpider(scrapy.Spider):
         self.start_urls = []
         if Path('tarjoman/index.txt').exists():
             text = Path('tarjoman/index.txt').read_text(encoding='utf-8')
+            # https://github.com/pourmand1376/PersianCrawler/issues/6
             items = json.loads(text)
             self.start_urls = items
 
