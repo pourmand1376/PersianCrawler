@@ -1,7 +1,7 @@
 import scrapy
 from pathlib import Path
 from logger import logger
-
+import re
 
 class VirgoolSpider(scrapy.Spider):
     name = "Virgool"
@@ -35,10 +35,15 @@ class VirgoolSpider(scrapy.Spider):
                         with Path('virgool/index.txt').open("a") as f:
                             f.write(url + '\n')
             else:
-                item = {'title': response.css('main#app h1::text').get().strip(),
-                        'author': response.css('main#app div.module-header > a::text').get().strip(),
+                item = {'title': response.css('main#app h1::text').get(),
+                        'author': response.css('main#app div.module-header > a::text').get(),
                         'text': "\n\n".join(response.css('main#app div.post-content * ::text').getall()),
                         'url': response.css('.shorturl-text::text').get()}
+                # if I use strip on all of them I may get error. I have to check if it is not none.
+                for key in item:
+                    if item[key]:
+                        item[key] = re.sub(' +', ' ', item[key]).strip()
+
                 return item
         except Exception:
             logger.error("Parsing Error: ", exc_info=True)
