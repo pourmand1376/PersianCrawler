@@ -2,8 +2,6 @@ import scrapy
 from pathlib import Path
 from logger import logger
 import re
-from trafilatura import  extract
-
 
 def get_cookie(response):
     content = response.body.decode('utf-8')
