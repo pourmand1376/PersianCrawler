@@ -26,10 +26,13 @@ class TarjomanSpider(scrapy.Spider):
 
     def parse(self, response, **kwargs):
         try:
-            item = {'title': response.css('div#detail-article h1::text').get(),
-                    'text': extract(response.body.decode('utf-8'),deduplicate=True, include_images=False, include_comments=False, include_links=False),
+            item = {'title': response.css('div h1::text').get(),
+                    'text': extract(response.body.decode('utf-8'),deduplicate=True, include_images=False,
+                                    include_comments=False, include_links=False),
                     'url': response.url,
                     }
+            if item['title'] is None or len(item['title']) == 0:
+                return scrapy.Request(url=response.url, callback=self.parse)
             return item
         except Exception:
             logger.error("Parsing Error: ", exc_info=True)
